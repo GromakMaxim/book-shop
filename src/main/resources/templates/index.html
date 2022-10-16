@@ -77,7 +77,7 @@ p.error-browser
                         <div class="search">
                             <form class="form form_search" action="#" method="post" data-searchlimit="20">
                                 <input class="search-input" id="query" name="query" type="text"
-                                       th:placeholder="#{searchbar.placeholder}" value=""/>
+                                       th:placeholder="#{searchbar.placeholder(${serverTime}, #{searchbar.placeholderTextPart1}, ${placeholderTextPart2})}" value=""/>
                                 <button class="search-button" type="submit" name="search" id="search">Поиск
                                 </button>
                             </form>
