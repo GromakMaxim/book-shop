@@ -1,40 +1,31 @@
 package ru.gromax.mybookshopapp.controllers;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import ru.gromax.mybookshopapp.data.Book;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "authors")
+@Getter
+@Setter
 public class Author {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String firstName;
     private String lastName;
 
-    public int getId() {
-        return id;
-    }
+    @OneToMany
+    @JoinColumn(name="author_id", referencedColumnName = "id")
+    private List<Book> bookList = new ArrayList<>();
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     @Override
     public String toString() {
-        return "Author{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        return firstName + " " + lastName;
     }
 }
