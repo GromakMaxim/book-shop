@@ -1,9 +1,9 @@
-package ru.gromax.mybookshopapp.controllers;
+package ru.gromax.mybookshopapp.data.author;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import ru.gromax.mybookshopapp.data.Book;
+import ru.gromax.mybookshopapp.data.book.Book;
 
 import java.util.ArrayList;
 import java.util.List;

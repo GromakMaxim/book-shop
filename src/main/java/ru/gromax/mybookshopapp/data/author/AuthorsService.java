@@ -1,9 +1,8 @@
-package ru.gromax.mybookshopapp.data;
+package ru.gromax.mybookshopapp.data.author;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import ru.gromax.mybookshopapp.controllers.Author;
 
 import java.sql.ResultSet;
 import java.util.List;

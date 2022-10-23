@@ -1,4 +1,4 @@
-package ru.gromax.mybookshopapp.data;
+package ru.gromax.mybookshopapp.data.book;
 
 import jakarta.persistence.*;
 import lombok.Getter;

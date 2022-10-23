@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import ru.gromax.mybookshopapp.data.AuthorsService;
+import ru.gromax.mybookshopapp.data.author.Author;
+import ru.gromax.mybookshopapp.data.author.AuthorsService;
 
 import java.util.List;
 import java.util.Map;
