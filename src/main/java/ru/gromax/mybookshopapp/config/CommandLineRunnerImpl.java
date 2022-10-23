@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import ru.gromax.mybookshopapp.data.TestEntity;
+import ru.gromax.mybookshopapp.data.TestEntityDAO;
 
 import java.util.logging.Logger;
 
@@ -15,10 +16,12 @@ import java.util.logging.Logger;
 public class CommandLineRunnerImpl implements CommandLineRunner {
 
     EntityManagerFactory entityManagerFactory;
+    TestEntityDAO testEntityDAO;
 
     @Autowired
-    public CommandLineRunnerImpl(EntityManagerFactory entityManagerFactory) {
+    public CommandLineRunnerImpl(EntityManagerFactory entityManagerFactory, TestEntityDAO testEntityDAO) {
         this.entityManagerFactory = entityManagerFactory;
+        this.testEntityDAO = testEntityDAO;
     }
 
     @Override
@@ -28,7 +31,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
             createTestEntity(new TestEntity());
         }
 
-        TestEntity testEntity = readTestEntityById(3);
+        TestEntity testEntity = testEntityDAO.findOne(3L);
         if (testEntity != null) {
             Logger.getLogger(this.getClass().getSimpleName()).info("read: " + testEntity.toString());
         } else {
