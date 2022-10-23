@@ -1,7 +1,6 @@
 package ru.gromax.mybookshopapp.data.author;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
@@ -11,21 +10,19 @@ import java.util.stream.Collectors;
 
 @Service
 public class AuthorsService {
-    private final JdbcTemplate jdbcTemplate;
+
+    AuthorCRUDRepository authorCRUDRepository;
 
     @Autowired
-    public AuthorsService(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    public AuthorsService(AuthorCRUDRepository authorCRUDRepository) {
+        this.authorCRUDRepository = authorCRUDRepository;
     }
 
     public Map<String, List<Author>> getAuthors() {
-        List<Author> authors = jdbcTemplate.query("SELECT * FROM authors", (ResultSet rs, int rowNum) -> {
-            Author author = new Author();
-            author.setId(rs.getInt("id"));
-            author.setFirstName(rs.getString("first_name"));
-            author.setLastName(rs.getString("last_name"));
-            return author;
-        });
-        return authors.stream().collect(Collectors.groupingBy((Author a) -> a.getLastName().substring(0, 1)));
+        return authorCRUDRepository.findAll().stream().collect(Collectors.groupingBy((Author a)->{return a.getLastName().substring(0, 1);}));
+    }
+
+    private String getAuthorById(int author_id) {
+        return  authorCRUDRepository.findById(author_id).get().toString();
     }
 }
