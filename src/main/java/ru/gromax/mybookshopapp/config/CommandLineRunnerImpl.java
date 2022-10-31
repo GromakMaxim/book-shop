@@ -1,19 +1,13 @@
 package ru.gromax.mybookshopapp.config;
 
-import jakarta.persistence.EntityManagerFactory;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Configuration;
 import ru.gromax.mybookshopapp.data.TestEntity;
 import ru.gromax.mybookshopapp.data.TestEntityCRUDRepository;
-import ru.gromax.mybookshopapp.data.TestEntityDAO;
 
 import java.util.logging.Logger;
 
-@Configuration
+//@Configuration
 public class CommandLineRunnerImpl implements CommandLineRunner {
 
     TestEntityCRUDRepository testEntityCRUDRepository;
@@ -47,7 +41,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         deleteById(2);
     }
 
-    private void deleteById(int id){
+    private void deleteById(int id) {
         testEntityCRUDRepository.deleteById(new Long(id));
     }
 
