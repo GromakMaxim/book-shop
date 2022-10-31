@@ -1,6 +1,9 @@
 package ru.gromax.mybookshopapp.data.book;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,5 +44,10 @@ public class BookService {
 
     public List<Book> getBestsellers(){
         return bookCRUDRepository.getBestsellers();
+    }
+
+    public Page<Book> getPageOfRecommendedBooks(Integer offset, Integer limit){
+        Pageable nextPage = PageRequest.of(offset, limit);
+        return bookCRUDRepository.findAll(nextPage);
     }
 }
