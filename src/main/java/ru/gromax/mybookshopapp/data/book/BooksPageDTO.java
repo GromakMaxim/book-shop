@@ -7,11 +7,11 @@ import java.util.List;
 
 @Getter
 @Setter
-public class RecommendedBooksPageDTO {
+public class BooksPageDTO {
     private Integer count;
     private List<Book> books;
 
-    public RecommendedBooksPageDTO(List<Book> books) {
+    public BooksPageDTO(List<Book> books) {
         this.count = books.size();
         this.books = books;
     }
